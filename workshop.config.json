@@ -1,5 +1,5 @@
 {
-    "api_base_url": "https://api.waybackhome.dev",
-    "map_base_url": "https://waybackhome.dev",
-    "default_event_code": "sandbox"
+  "api_base_url": "https://way-back-home-api-46247235558.us-central1.run.app",
+  "map_base_url": "https://way-back-home-frontend-46247235558.us-central1.run.app",
+  "default_event_code": "sandbox"
 }
