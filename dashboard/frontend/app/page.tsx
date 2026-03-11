@@ -187,7 +187,8 @@ export default function HomePage() {
           </div>
 
           <p className="text-xs text-space-lavender/40">
-            An AI-powered workshop experience by Google Cloud. Europe Edition by Konstantinos Kechagias.
+            An AI-powered workshop experience by Google Cloud.<br />
+            Europe Edition by Konstantinos Kechagias.
           </p>
         </motion.div>
       </div>
