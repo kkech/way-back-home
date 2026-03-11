@@ -104,6 +104,23 @@ See [Deployment Guide](#-deployment) below for running your own instance.
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
+## 📅 For Event Organizers
+
+Are you hosting a workshop, hackathon, or community event? You can request a dedicated **Way Back Home** workspace for your attendees! 
+
+When approved, we will generate a custom event code for your workshop, giving your participants a unified map and workspace at a clean URL: `https://waybackhome.eu/e/<your-event-code>`.
+
+### How to Request an Event
+
+1. Navigate to the **[Issues](../../issues)** tab of this repository.
+2. Click the green **New Issue** button.
+3. Select **Workshop Event Request** from the template list.
+4. Fill out the provided form. Make sure to choose a short, memorable `Event Code` (e.g., `gdg-athens-2025`).
+5. Submit the issue! 
+
+Our team will review your request, configure your event space, and ping you in the issue thread once your custom URL is live and ready for your participants.
+
+
 ## 🌐 Deployment
 
 ### Deploy Your Own Instance
