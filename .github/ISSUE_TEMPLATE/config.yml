@@ -1,6 +1,2 @@
+# Disable the option to open a blank, unformatted issue
 blank_issues_enabled: false
-
-contact_links:
-  - name: Host your own Way Back Home event
-    url: https://github.com/google-americas/way-back-home/issues/new?template=event_request.md
-    about: Submit a request to create a new workshop event using the event request template.
