@@ -1,4 +1,6 @@
-# 🚀 Way Back Home
+# 🚀 Way Back Home — Europe Edition
+
+**European deployment of the Way Back Home AI workshop platform**
 
 ![Way Back Home](dashboard/frontend/public/prelude.png)
 
@@ -6,7 +8,7 @@
 
 Way Back Home is a hands-on workshop experience that teaches Google Cloud AI technologies through an engaging narrative. Participants crash-land on an alien planet and must use AI to identify themselves, analyze their surroundings, and coordinate rescue efforts.
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-waybackhome.dev-blue?style=for-the-badge)](https://waybackhome.dev)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-waybackhome.eu-blue?style=for-the-badge)](https://waybackhome.eu)
 [![Codelab](https://img.shields.io/badge/Codelab-Level%200-green?style=for-the-badge)](https://codelabs.developers.google.com/way-back-home-level-0/instructions)
 [![Codelab](https://img.shields.io/badge/Codelab-Level%31-orange?style=for-the-badge)](https://codelabs.developers.google.com/way-back-home-level-1/instructions)
 [![Codelab](https://img.shields.io/badge/Codelab-Level%202-green?style=for-the-badge)](x)
@@ -113,7 +115,7 @@ See [Deployment Guide](#-deployment) below for running your own instance.
 
 2. **Clone and configure:**
    ```bash
-   git clone https://github.com/google-americas/way-back-home.git
+   git clone https://github.com/kkech/way-back-home.git
    cd way-back-home
    
    # Configure your project
@@ -128,7 +130,7 @@ See [Deployment Guide](#-deployment) below for running your own instance.
 4. **Deploy all services:**
    ```bash
    gcloud builds submit --config cloudbuild.yaml \
-     --substitutions=_API_BASE_URL=https://api.yourdomain.dev,_MAP_BASE_URL=https://yourdomain.dev
+  --substitutions=_API_BASE_URL=https://api.waybackhome.eu,_MAP_BASE_URL=https://waybackhome.eu
    ```
 
 ### Environment Configuration
