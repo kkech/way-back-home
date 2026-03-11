@@ -1,0 +1,60 @@
+name: Workshop Event Request
+description: Request creation of a Way Back Home event for your workshop
+title: "[Event Request] <event-code>"
+labels: ["event-request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Workshop Information
+        Please fill out the details below so we can set up your Way Back Home event.
+  - type: input
+    id: event-code
+    attributes:
+      label: Event Code
+      description: Short unique identifier participants will use (e.g., `gdg-athens-2025`). This will create the URL `https://waybackhome.eu/e/<event-code>`
+      placeholder: ex. gdg-athens-2025
+    validations:
+      required: true
+  - type: input
+    id: workshop-name
+    attributes:
+      label: Workshop Name
+      description: Full name of the event
+      placeholder: ex. GDG Athens Spring Hackathon
+    validations:
+      required: true
+  - type: input
+    id: organizer-name
+    attributes:
+      label: Organizer Name
+    validations:
+      required: true
+  - type: input
+    id: organization
+    attributes:
+      label: Organization / Community
+      description: e.g., GDG Athens, Google Developer Student Club, University
+    validations:
+      required: true
+  - type: input
+    id: date
+    attributes:
+      label: Workshop Date
+      placeholder: YYYY-MM-DD
+    validations:
+      required: true
+  - type: input
+    id: participants
+    attributes:
+      label: Estimated Participants
+      placeholder: ex. 50
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: Anything special we should know (duration, multi-session workshop, etc.)
+    validations:
+      required: false
