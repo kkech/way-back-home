@@ -101,7 +101,7 @@
             const eventCode = eventCodeInput.value || "boston";
             const eventName = eventNameInput.value || "Way Back Home Boston";
 
-            const command = `curl -X POST https://way-back-home-api-789872749985.us-central1.run.app/admin/events \\
+            const command = `curl -X POST https://api.waybackhome.eu/admin/events \\
   -H "Authorization: Bearer ${currentToken}" \\
   -H "Content-Type: application/json" \\
   -d '{"code": "${eventCode}", "name": "${eventName}"}'`;
