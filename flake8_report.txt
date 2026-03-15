@@ -1,0 +1,31 @@
+./level_2/backend/api/routes/chat.py:61:23: F821 undefined name 'session_service'
+                await session_service.get_session(app_name="survivor-network", session_id=session_id, user_id=user_id)
+                      ^
+./level_2/backend/api/routes/chat.py:70:29: F821 undefined name 'session_service'
+            session = await session_service.create_session(user_id=user_id, app_name="survivor-network")
+                            ^
+./level_2/backend/api/routes/chat.py:81:32: F821 undefined name 'runner'
+            async for event in runner.run_async(
+                               ^
+./level_2/backend/deploy_agent.py:128:23: F821 undefined name 'custom_topics'
+        memory_topics=custom_topics,
+                      ^
+./level_2/backend/services/hybrid_search_service.py:365:17: F821 undefined name 'sql'
+                sql,
+                ^
+./level_3/backend/app/biometric_agent/agent.py:15:11: F821 undefined name 'MODEL_ID'
+    model=MODEL_ID,
+          ^
+./level_4/backend/main.py:169:10: E999 IndentationError: expected an indented block after 'for' statement on line 158
+        logger.info("Gemini Live API connection closed.")
+         ^
+./level_5/satellite/main.py:39:24: F821 undefined name 'lifespan'
+app = FastAPI(lifespan=lifespan)
+                       ^
+./solutions/level_5/satellite/main.py:142:5: F824 `global PODS` is unused: name is never assigned in scope
+    global FORMATION, PODS
+    ^
+1     E999 IndentationError: expected an indented block after 'for' statement on line 158
+7     F821 undefined name 'session_service'
+1     F824 `global PODS` is unused: name is never assigned in scope
+9

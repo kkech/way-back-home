@@ -1,0 +1,1095 @@
+Run started:2026-03-15 14:36:44.289390+00:00
+
+Test results:
+>> Issue: [B311:blacklist] Standard pseudo-random generators are not suitable for security/cryptographic purposes.
+   Severity: Low   Confidence: High
+   CWE: CWE-330 (https://cwe.mitre.org/data/definitions/330.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_calls.html#b311-random
+   Location: ./dashboard/backend/app/routes/participants.py:73:17
+72	    participant_id = secrets.token_hex(4)  # 8 character hex string
+73	    starting_x = random.randint(10, MAP_WIDTH - 10)
+74	    starting_y = random.randint(10, MAP_HEIGHT - 10)
+
+--------------------------------------------------
+>> Issue: [B311:blacklist] Standard pseudo-random generators are not suitable for security/cryptographic purposes.
+   Severity: Low   Confidence: High
+   CWE: CWE-330 (https://cwe.mitre.org/data/definitions/330.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_calls.html#b311-random
+   Location: ./dashboard/backend/app/routes/participants.py:74:17
+73	    starting_x = random.randint(10, MAP_WIDTH - 10)
+74	    starting_y = random.randint(10, MAP_HEIGHT - 10)
+75
+
+--------------------------------------------------
+>> Issue: [B311:blacklist] Standard pseudo-random generators are not suitable for security/cryptographic purposes.
+   Severity: Low   Confidence: High
+   CWE: CWE-330 (https://cwe.mitre.org/data/definitions/330.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_calls.html#b311-random
+   Location: ./level_0/customize.py:101:21
+100	        # Generate random traits
+101	        expression = random.choice(RANDOM_EXPRESSIONS)
+102	        hair = random.choice(RANDOM_HAIR_STYLES)
+
+--------------------------------------------------
+>> Issue: [B311:blacklist] Standard pseudo-random generators are not suitable for security/cryptographic purposes.
+   Severity: Low   Confidence: High
+   CWE: CWE-330 (https://cwe.mitre.org/data/definitions/330.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_calls.html#b311-random
+   Location: ./level_0/customize.py:102:15
+101	        expression = random.choice(RANDOM_EXPRESSIONS)
+102	        hair = random.choice(RANDOM_HAIR_STYLES)
+103	        appearance = f"{expression}, {hair}"
+
+--------------------------------------------------
+>> Issue: [B104:hardcoded_bind_all_interfaces] Possible binding to all interfaces.
+   Severity: Medium   Confidence: Medium
+   CWE: CWE-605 (https://cwe.mitre.org/data/definitions/605.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b104_hardcoded_bind_all_interfaces.html
+   Location: ./level_1/mcp-server/main.py:155:17
+154	            transport="http",
+155	            host="0.0.0.0",
+156	            port=port,
+
+--------------------------------------------------
+>> Issue: [B404:blacklist] Consider possible security implications associated with the subprocess module.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_imports.html#b404-import-subprocess
+   Location: ./level_1/setup/billing-enablement.py:3:0
+2	import re
+3	import subprocess
+4	import time
+
+--------------------------------------------------
+>> Issue: [B607:start_process_with_partial_path] Starting a process with a partial executable path
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b607_start_process_with_partial_path.html
+   Location: ./level_1/setup/billing-enablement.py:40:8
+39	    try:
+40	        subprocess.run(
+41	            [
+42	                "gcloud",
+43	                "services",
+44	                "enable",
+45	                "cloudbilling.googleapis.com",
+46	                "--project",
+47	                project_id,
+48	            ],
+49	            check=True,
+50	            capture_output=True,
+51	            text=True,
+52	        )
+53	        print("Successfully sent request to enable the Cloud Billing API.")
+
+--------------------------------------------------
+>> Issue: [B603:subprocess_without_shell_equals_true] subprocess call - check for execution of untrusted input.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html
+   Location: ./level_1/setup/billing-enablement.py:40:8
+39	    try:
+40	        subprocess.run(
+41	            [
+42	                "gcloud",
+43	                "services",
+44	                "enable",
+45	                "cloudbilling.googleapis.com",
+46	                "--project",
+47	                project_id,
+48	            ],
+49	            check=True,
+50	            capture_output=True,
+51	            text=True,
+52	        )
+53	        print("Successfully sent request to enable the Cloud Billing API.")
+
+--------------------------------------------------
+>> Issue: [B110:try_except_pass] Try, Except, Pass detected.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b110_try_except_pass.html
+   Location: ./level_1/setup/setup_star_catalog.py:93:4
+92	        print(f"  Deleted existing table {TABLE_ID}")
+93	    except Exception:
+94	        pass
+95
+
+--------------------------------------------------
+>> Issue: [B608:hardcoded_sql_expressions] Possible SQL injection vector through string-based query construction.
+   Severity: Medium   Confidence: Low
+   CWE: CWE-89 (https://cwe.mitre.org/data/definitions/89.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b608_hardcoded_sql_expressions.html
+   Location: ./level_1/setup/setup_star_catalog.py:110:16
+109	    """Verify the table is queryable."""
+110	    query = f"""
+111	    SELECT biome, quadrant, COUNT(*) as entries
+112	    FROM `{PROJECT_ID}.{DATASET_ID}.{TABLE_ID}`
+113	    GROUP BY biome, quadrant
+114	    ORDER BY quadrant
+115	    """
+116
+
+--------------------------------------------------
+>> Issue: [B608:hardcoded_sql_expressions] Possible SQL injection vector through string-based query construction.
+   Severity: Medium   Confidence: Low
+   CWE: CWE-89 (https://cwe.mitre.org/data/definitions/89.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b608_hardcoded_sql_expressions.html
+   Location: ./level_2/backend/services/hybrid_search_service.py:275:18
+274
+275	        sql = f"""
+276	            SELECT
+277	                s.survivor_id,
+278	                s.name AS survivor_name,
+279	                s.biome,
+280	                sk.skill_id,
+281	                sk.name AS skill_name,
+282	                sk.category
+283	            FROM Survivors s
+284	            JOIN SurvivorHasSkill shs ON s.survivor_id = shs.survivor_id
+285	            JOIN Skills sk ON shs.skill_id = sk.skill_id
+286	            WHERE {where_clause}
+287	            ORDER BY s.name, sk.name
+288	            LIMIT @limit
+289	        """
+290
+
+--------------------------------------------------
+>> Issue: [B608:hardcoded_sql_expressions] Possible SQL injection vector through string-based query construction.
+   Severity: Medium   Confidence: Low
+   CWE: CWE-89 (https://cwe.mitre.org/data/definitions/89.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b608_hardcoded_sql_expressions.html
+   Location: ./level_2/backend/services/spanner_graph_service.py:119:18
+118	        # Use LOWER for case-insensitive match
+119	        query = f"SELECT {config['id_column']} FROM {config['table']} WHERE LOWER({config['name_column']}) = @name LIMIT 1"
+120
+
+--------------------------------------------------
+>> Issue: [B608:hardcoded_sql_expressions] Possible SQL injection vector through string-based query construction.
+   Severity: Medium   Confidence: Low
+   CWE: CWE-89 (https://cwe.mitre.org/data/definitions/89.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b608_hardcoded_sql_expressions.html
+   Location: ./level_2/backend/services/spanner_graph_service.py:201:26
+200	        # Check existence
+201	        check_query = f"""
+202	            SELECT 1 FROM {config['table']}
+203	            WHERE {config['source_col']} = @source_id
+204	            AND {config['target_col']} = @target_id
+205	            LIMIT 1
+206	        """
+207	        results = list(transaction.execute_sql(
+
+--------------------------------------------------
+>> Issue: [B110:try_except_pass] Try, Except, Pass detected.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b110_try_except_pass.html
+   Location: ./level_2/backend/services/spanner_graph_service.py:270:13
+269	                 values.append(dur)
+270	             except:
+271	                 pass
+272
+
+--------------------------------------------------
+>> Issue: [B404:blacklist] Consider possible security implications associated with the subprocess module.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_imports.html#b404-import-subprocess
+   Location: ./level_2/billing-enablement.py:3:0
+2	import re
+3	import subprocess
+4	import time
+
+--------------------------------------------------
+>> Issue: [B607:start_process_with_partial_path] Starting a process with a partial executable path
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b607_start_process_with_partial_path.html
+   Location: ./level_2/billing-enablement.py:40:8
+39	    try:
+40	        subprocess.run(
+41	            [
+42	                "gcloud",
+43	                "services",
+44	                "enable",
+45	                "cloudbilling.googleapis.com",
+46	                "--project",
+47	                project_id,
+48	            ],
+49	            check=True,
+50	            capture_output=True,
+51	            text=True,
+52	        )
+53	        print("Successfully sent request to enable the Cloud Billing API.")
+
+--------------------------------------------------
+>> Issue: [B603:subprocess_without_shell_equals_true] subprocess call - check for execution of untrusted input.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html
+   Location: ./level_2/billing-enablement.py:40:8
+39	    try:
+40	        subprocess.run(
+41	            [
+42	                "gcloud",
+43	                "services",
+44	                "enable",
+45	                "cloudbilling.googleapis.com",
+46	                "--project",
+47	                project_id,
+48	            ],
+49	            check=True,
+50	            capture_output=True,
+51	            text=True,
+52	        )
+53	        print("Successfully sent request to enable the Cloud Billing API.")
+
+--------------------------------------------------
+>> Issue: [B104:hardcoded_bind_all_interfaces] Possible binding to all interfaces.
+   Severity: Medium   Confidence: Medium
+   CWE: CWE-605 (https://cwe.mitre.org/data/definitions/605.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b104_hardcoded_bind_all_interfaces.html
+   Location: ./level_3/backend/app/main.py:109:26
+108	    # Run uvicorn programmatically
+109	    uvicorn.run(app, host="0.0.0.0", port=PORT)
+
+--------------------------------------------------
+>> Issue: [B104:hardcoded_bind_all_interfaces] Possible binding to all interfaces.
+   Severity: Medium   Confidence: Medium
+   CWE: CWE-605 (https://cwe.mitre.org/data/definitions/605.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b104_hardcoded_bind_all_interfaces.html
+   Location: ./level_3/mock/mock_server.py:92:26
+91	    # Run uvicorn programmatically
+92	    uvicorn.run(app, host="0.0.0.0", port=PORT)
+
+--------------------------------------------------
+>> Issue: [B404:blacklist] Consider possible security implications associated with the subprocess module.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_imports.html#b404-import-subprocess
+   Location: ./level_3/scripts/billing-enablement.py:3:0
+2	import re
+3	import subprocess
+4	import time
+
+--------------------------------------------------
+>> Issue: [B607:start_process_with_partial_path] Starting a process with a partial executable path
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b607_start_process_with_partial_path.html
+   Location: ./level_3/scripts/billing-enablement.py:40:8
+39	    try:
+40	        subprocess.run(
+41	            [
+42	                "gcloud",
+43	                "services",
+44	                "enable",
+45	                "cloudbilling.googleapis.com",
+46	                "--project",
+47	                project_id,
+48	            ],
+49	            check=True,
+50	            capture_output=True,
+51	            text=True,
+52	        )
+53	        print("Successfully sent request to enable the Cloud Billing API.")
+
+--------------------------------------------------
+>> Issue: [B603:subprocess_without_shell_equals_true] subprocess call - check for execution of untrusted input.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html
+   Location: ./level_3/scripts/billing-enablement.py:40:8
+39	    try:
+40	        subprocess.run(
+41	            [
+42	                "gcloud",
+43	                "services",
+44	                "enable",
+45	                "cloudbilling.googleapis.com",
+46	                "--project",
+47	                project_id,
+48	            ],
+49	            check=True,
+50	            capture_output=True,
+51	            text=True,
+52	        )
+53	        print("Successfully sent request to enable the Cloud Billing API.")
+
+--------------------------------------------------
+>> Issue: [B501:request_with_no_cert_validation] Call to httpx with verify=False disabling SSL certificate checks, security issue.
+   Severity: High   Confidence: High
+   CWE: CWE-295 (https://cwe.mitre.org/data/definitions/295.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b501_request_with_no_cert_validation.html
+   Location: ./level_4/backend/dispatch_agent/agent.py:29:18
+28
+29	insecure_client = httpx.AsyncClient(verify=False)
+30	ARCHITECT_URL = os.environ.get("ARCHITECT_URL","http://localhost:8081")
+
+--------------------------------------------------
+>> Issue: [B404:blacklist] Consider possible security implications associated with the subprocess module.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_imports.html#b404-import-subprocess
+   Location: ./level_4/scripts/billing-enablement.py:3:0
+2	import re
+3	import subprocess
+4	import time
+
+--------------------------------------------------
+>> Issue: [B607:start_process_with_partial_path] Starting a process with a partial executable path
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b607_start_process_with_partial_path.html
+   Location: ./level_4/scripts/billing-enablement.py:40:8
+39	    try:
+40	        subprocess.run(
+41	            [
+42	                "gcloud",
+43	                "services",
+44	                "enable",
+45	                "cloudbilling.googleapis.com",
+46	                "--project",
+47	                project_id,
+48	            ],
+49	            check=True,
+50	            capture_output=True,
+51	            text=True,
+52	        )
+53	        print("Successfully sent request to enable the Cloud Billing API.")
+
+--------------------------------------------------
+>> Issue: [B603:subprocess_without_shell_equals_true] subprocess call - check for execution of untrusted input.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html
+   Location: ./level_4/scripts/billing-enablement.py:40:8
+39	    try:
+40	        subprocess.run(
+41	            [
+42	                "gcloud",
+43	                "services",
+44	                "enable",
+45	                "cloudbilling.googleapis.com",
+46	                "--project",
+47	                project_id,
+48	            ],
+49	            check=True,
+50	            capture_output=True,
+51	            text=True,
+52	        )
+53	        print("Successfully sent request to enable the Cloud Billing API.")
+
+--------------------------------------------------
+>> Issue: [B311:blacklist] Standard pseudo-random generators are not suitable for security/cryptographic purposes.
+   Severity: Low   Confidence: High
+   CWE: CWE-330 (https://cwe.mitre.org/data/definitions/330.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_calls.html#b311-random
+   Location: ./level_5/satellite/main.py:63:27
+62	    global PODS, TARGET_PODS
+63	    PODS = [{"id": i, "x": random.randint(50, 850), "y": random.randint(100, 600)} for i in range(15)]
+64	    TARGET_PODS = [p.copy() for p in PODS]
+
+--------------------------------------------------
+>> Issue: [B311:blacklist] Standard pseudo-random generators are not suitable for security/cryptographic purposes.
+   Severity: Low   Confidence: High
+   CWE: CWE-330 (https://cwe.mitre.org/data/definitions/330.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_calls.html#b311-random
+   Location: ./level_5/satellite/main.py:63:57
+62	    global PODS, TARGET_PODS
+63	    PODS = [{"id": i, "x": random.randint(50, 850), "y": random.randint(100, 600)} for i in range(15)]
+64	    TARGET_PODS = [p.copy() for p in PODS]
+
+--------------------------------------------------
+>> Issue: [B104:hardcoded_bind_all_interfaces] Possible binding to all interfaces.
+   Severity: Medium   Confidence: Medium
+   CWE: CWE-605 (https://cwe.mitre.org/data/definitions/605.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b104_hardcoded_bind_all_interfaces.html
+   Location: ./level_5/satellite/main.py:133:26
+132	    import uvicorn
+133	    uvicorn.run(app, host="0.0.0.0", port=8000, proxy_headers=True, forwarded_allow_ips="*")
+
+--------------------------------------------------
+>> Issue: [B404:blacklist] Consider possible security implications associated with the subprocess module.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_imports.html#b404-import-subprocess
+   Location: ./level_5/scripts/billing-enablement.py:3:0
+2	import re
+3	import subprocess
+4	import time
+
+--------------------------------------------------
+>> Issue: [B607:start_process_with_partial_path] Starting a process with a partial executable path
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b607_start_process_with_partial_path.html
+   Location: ./level_5/scripts/billing-enablement.py:40:8
+39	    try:
+40	        subprocess.run(
+41	            [
+42	                "gcloud",
+43	                "services",
+44	                "enable",
+45	                "cloudbilling.googleapis.com",
+46	                "--project",
+47	                project_id,
+48	            ],
+49	            check=True,
+50	            capture_output=True,
+51	            text=True,
+52	        )
+53	        print("Successfully sent request to enable the Cloud Billing API.")
+
+--------------------------------------------------
+>> Issue: [B603:subprocess_without_shell_equals_true] subprocess call - check for execution of untrusted input.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html
+   Location: ./level_5/scripts/billing-enablement.py:40:8
+39	    try:
+40	        subprocess.run(
+41	            [
+42	                "gcloud",
+43	                "services",
+44	                "enable",
+45	                "cloudbilling.googleapis.com",
+46	                "--project",
+47	                project_id,
+48	            ],
+49	            check=True,
+50	            capture_output=True,
+51	            text=True,
+52	        )
+53	        print("Successfully sent request to enable the Cloud Billing API.")
+
+--------------------------------------------------
+>> Issue: [B404:blacklist] Consider possible security implications associated with the subprocess module.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_imports.html#b404-import-subprocess
+   Location: ./scripts/billing-enablement.py:26:0
+25	import re
+26	import subprocess
+27	import sys
+
+--------------------------------------------------
+>> Issue: [B603:subprocess_without_shell_equals_true] subprocess call - check for execution of untrusted input.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html
+   Location: ./scripts/billing-enablement.py:37:4
+36	    print("Installing google-cloud-billing...")
+37	    subprocess.check_call(
+38	        [
+39	            sys.executable,
+40	            "-m",
+41	            "pip",
+42	            "install",
+43	            "--quiet",
+44	            "--user",
+45	            "--break-system-packages",
+46	            "google-cloud-billing",
+47	        ]
+48	    )
+49	    from google.cloud import billing_v1
+
+--------------------------------------------------
+>> Issue: [B607:start_process_with_partial_path] Starting a process with a partial executable path
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b607_start_process_with_partial_path.html
+   Location: ./scripts/billing-enablement.py:61:17
+60	    try:
+61	        result = subprocess.run(
+62	            ["gcloud", "config", "get-value", "project"],
+63	            capture_output=True,
+64	            text=True,
+65	            timeout=10,
+66	        )
+67	        project_id = result.stdout.strip()
+
+--------------------------------------------------
+>> Issue: [B603:subprocess_without_shell_equals_true] subprocess call - check for execution of untrusted input.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html
+   Location: ./scripts/billing-enablement.py:61:17
+60	    try:
+61	        result = subprocess.run(
+62	            ["gcloud", "config", "get-value", "project"],
+63	            capture_output=True,
+64	            text=True,
+65	            timeout=10,
+66	        )
+67	        project_id = result.stdout.strip()
+
+--------------------------------------------------
+>> Issue: [B607:start_process_with_partial_path] Starting a process with a partial executable path
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b607_start_process_with_partial_path.html
+   Location: ./scripts/billing-enablement.py:82:8
+81	    try:
+82	        subprocess.run(
+83	            [
+84	                "gcloud",
+85	                "services",
+86	                "enable",
+87	                "cloudbilling.googleapis.com",
+88	                "--project",
+89	                project_id,
+90	                "--quiet",
+91	            ],
+92	            check=True,
+93	            capture_output=True,
+94	            text=True,
+95	            timeout=60,
+96	        )
+97	        print("   ✓ Cloud Billing API enabled")
+
+--------------------------------------------------
+>> Issue: [B603:subprocess_without_shell_equals_true] subprocess call - check for execution of untrusted input.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html
+   Location: ./scripts/billing-enablement.py:82:8
+81	    try:
+82	        subprocess.run(
+83	            [
+84	                "gcloud",
+85	                "services",
+86	                "enable",
+87	                "cloudbilling.googleapis.com",
+88	                "--project",
+89	                project_id,
+90	                "--quiet",
+91	            ],
+92	            check=True,
+93	            capture_output=True,
+94	            text=True,
+95	            timeout=60,
+96	        )
+97	        print("   ✓ Cloud Billing API enabled")
+
+--------------------------------------------------
+>> Issue: [B110:try_except_pass] Try, Except, Pass detected.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b110_try_except_pass.html
+   Location: ./scripts/billing-enablement.py:286:8
+285	                return True
+286	        except Exception:
+287	            pass
+288
+
+--------------------------------------------------
+>> Issue: [B404:blacklist] Consider possible security implications associated with the subprocess module.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_imports.html#b404-import-subprocess
+   Location: ./scripts/verify_setup.py:14:0
+13	import sys
+14	import subprocess
+15
+
+--------------------------------------------------
+>> Issue: [B607:start_process_with_partial_path] Starting a process with a partial executable path
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b607_start_process_with_partial_path.html
+   Location: ./scripts/verify_setup.py:20:17
+19	    try:
+20	        result = subprocess.run(
+21	            ["gcloud", "auth", "list", "--format=value(account)", "--filter=status:ACTIVE"],
+22	            capture_output=True,
+23	            text=True,
+24	            timeout=10
+25	        )
+26	        account = result.stdout.strip()
+
+--------------------------------------------------
+>> Issue: [B603:subprocess_without_shell_equals_true] subprocess call - check for execution of untrusted input.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html
+   Location: ./scripts/verify_setup.py:20:17
+19	    try:
+20	        result = subprocess.run(
+21	            ["gcloud", "auth", "list", "--format=value(account)", "--filter=status:ACTIVE"],
+22	            capture_output=True,
+23	            text=True,
+24	            timeout=10
+25	        )
+26	        account = result.stdout.strip()
+
+--------------------------------------------------
+>> Issue: [B104:hardcoded_bind_all_interfaces] Possible binding to all interfaces.
+   Severity: Medium   Confidence: Medium
+   CWE: CWE-605 (https://cwe.mitre.org/data/definitions/605.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b104_hardcoded_bind_all_interfaces.html
+   Location: ./solutions/level_1/agent/agent.py:251:30
+250	    # Start server
+251	    uvicorn.run(a2a_app, host="0.0.0.0", port=8080)
+
+--------------------------------------------------
+>> Issue: [B104:hardcoded_bind_all_interfaces] Possible binding to all interfaces.
+   Severity: Medium   Confidence: Medium
+   CWE: CWE-605 (https://cwe.mitre.org/data/definitions/605.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b104_hardcoded_bind_all_interfaces.html
+   Location: ./solutions/level_1/mcp-server/main.py:319:17
+318	            transport="http",
+319	            host="0.0.0.0",
+320	            port=port,
+
+--------------------------------------------------
+>> Issue: [B404:blacklist] Consider possible security implications associated with the subprocess module.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_imports.html#b404-import-subprocess
+   Location: ./solutions/level_1/setup/billing-enablement.py:3:0
+2	import re
+3	import subprocess
+4	import time
+
+--------------------------------------------------
+>> Issue: [B607:start_process_with_partial_path] Starting a process with a partial executable path
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b607_start_process_with_partial_path.html
+   Location: ./solutions/level_1/setup/billing-enablement.py:40:8
+39	    try:
+40	        subprocess.run(
+41	            [
+42	                "gcloud",
+43	                "services",
+44	                "enable",
+45	                "cloudbilling.googleapis.com",
+46	                "--project",
+47	                project_id,
+48	            ],
+49	            check=True,
+50	            capture_output=True,
+51	            text=True,
+52	        )
+53	        print("Successfully sent request to enable the Cloud Billing API.")
+
+--------------------------------------------------
+>> Issue: [B603:subprocess_without_shell_equals_true] subprocess call - check for execution of untrusted input.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html
+   Location: ./solutions/level_1/setup/billing-enablement.py:40:8
+39	    try:
+40	        subprocess.run(
+41	            [
+42	                "gcloud",
+43	                "services",
+44	                "enable",
+45	                "cloudbilling.googleapis.com",
+46	                "--project",
+47	                project_id,
+48	            ],
+49	            check=True,
+50	            capture_output=True,
+51	            text=True,
+52	        )
+53	        print("Successfully sent request to enable the Cloud Billing API.")
+
+--------------------------------------------------
+>> Issue: [B110:try_except_pass] Try, Except, Pass detected.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b110_try_except_pass.html
+   Location: ./solutions/level_1/setup/setup_star_catalog.py:93:4
+92	        print(f"  Deleted existing table {TABLE_ID}")
+93	    except Exception:
+94	        pass
+95
+
+--------------------------------------------------
+>> Issue: [B608:hardcoded_sql_expressions] Possible SQL injection vector through string-based query construction.
+   Severity: Medium   Confidence: Low
+   CWE: CWE-89 (https://cwe.mitre.org/data/definitions/89.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b608_hardcoded_sql_expressions.html
+   Location: ./solutions/level_1/setup/setup_star_catalog.py:110:16
+109	    """Verify the table is queryable."""
+110	    query = f"""
+111	    SELECT biome, quadrant, COUNT(*) as entries
+112	    FROM `{PROJECT_ID}.{DATASET_ID}.{TABLE_ID}`
+113	    GROUP BY biome, quadrant
+114	    ORDER BY quadrant
+115	    """
+116
+
+--------------------------------------------------
+>> Issue: [B608:hardcoded_sql_expressions] Possible SQL injection vector through string-based query construction.
+   Severity: Medium   Confidence: Low
+   CWE: CWE-89 (https://cwe.mitre.org/data/definitions/89.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b608_hardcoded_sql_expressions.html
+   Location: ./solutions/level_2/backend/services/hybrid_search_service.py:275:18
+274
+275	        sql = f"""
+276	            SELECT
+277	                s.survivor_id,
+278	                s.name AS survivor_name,
+279	                s.biome,
+280	                sk.skill_id,
+281	                sk.name AS skill_name,
+282	                sk.category
+283	            FROM Survivors s
+284	            JOIN SurvivorHasSkill shs ON s.survivor_id = shs.survivor_id
+285	            JOIN Skills sk ON shs.skill_id = sk.skill_id
+286	            WHERE {where_clause}
+287	            ORDER BY s.name, sk.name
+288	            LIMIT @limit
+289	        """
+290
+
+--------------------------------------------------
+>> Issue: [B608:hardcoded_sql_expressions] Possible SQL injection vector through string-based query construction.
+   Severity: Medium   Confidence: Low
+   CWE: CWE-89 (https://cwe.mitre.org/data/definitions/89.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b608_hardcoded_sql_expressions.html
+   Location: ./solutions/level_2/backend/services/spanner_graph_service.py:119:18
+118	        # Use LOWER for case-insensitive match
+119	        query = f"SELECT {config['id_column']} FROM {config['table']} WHERE LOWER({config['name_column']}) = @name LIMIT 1"
+120
+
+--------------------------------------------------
+>> Issue: [B608:hardcoded_sql_expressions] Possible SQL injection vector through string-based query construction.
+   Severity: Medium   Confidence: Low
+   CWE: CWE-89 (https://cwe.mitre.org/data/definitions/89.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b608_hardcoded_sql_expressions.html
+   Location: ./solutions/level_2/backend/services/spanner_graph_service.py:201:26
+200	        # Check existence
+201	        check_query = f"""
+202	            SELECT 1 FROM {config['table']}
+203	            WHERE {config['source_col']} = @source_id
+204	            AND {config['target_col']} = @target_id
+205	            LIMIT 1
+206	        """
+207	        results = list(transaction.execute_sql(
+
+--------------------------------------------------
+>> Issue: [B110:try_except_pass] Try, Except, Pass detected.
+   Severity: Low   Confidence: High
+   CWE: CWE-703 (https://cwe.mitre.org/data/definitions/703.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b110_try_except_pass.html
+   Location: ./solutions/level_2/backend/services/spanner_graph_service.py:270:13
+269	                 values.append(dur)
+270	             except:
+271	                 pass
+272
+
+--------------------------------------------------
+>> Issue: [B404:blacklist] Consider possible security implications associated with the subprocess module.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_imports.html#b404-import-subprocess
+   Location: ./solutions/level_2/billing-enablement.py:3:0
+2	import re
+3	import subprocess
+4	import time
+
+--------------------------------------------------
+>> Issue: [B607:start_process_with_partial_path] Starting a process with a partial executable path
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b607_start_process_with_partial_path.html
+   Location: ./solutions/level_2/billing-enablement.py:40:8
+39	    try:
+40	        subprocess.run(
+41	            [
+42	                "gcloud",
+43	                "services",
+44	                "enable",
+45	                "cloudbilling.googleapis.com",
+46	                "--project",
+47	                project_id,
+48	            ],
+49	            check=True,
+50	            capture_output=True,
+51	            text=True,
+52	        )
+53	        print("Successfully sent request to enable the Cloud Billing API.")
+
+--------------------------------------------------
+>> Issue: [B603:subprocess_without_shell_equals_true] subprocess call - check for execution of untrusted input.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html
+   Location: ./solutions/level_2/billing-enablement.py:40:8
+39	    try:
+40	        subprocess.run(
+41	            [
+42	                "gcloud",
+43	                "services",
+44	                "enable",
+45	                "cloudbilling.googleapis.com",
+46	                "--project",
+47	                project_id,
+48	            ],
+49	            check=True,
+50	            capture_output=True,
+51	            text=True,
+52	        )
+53	        print("Successfully sent request to enable the Cloud Billing API.")
+
+--------------------------------------------------
+>> Issue: [B104:hardcoded_bind_all_interfaces] Possible binding to all interfaces.
+   Severity: Medium   Confidence: Medium
+   CWE: CWE-605 (https://cwe.mitre.org/data/definitions/605.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b104_hardcoded_bind_all_interfaces.html
+   Location: ./solutions/level_3/backend/app/main.py:277:26
+276	    # Run uvicorn programmatically
+277	    uvicorn.run(app, host="0.0.0.0", port=PORT)
+
+--------------------------------------------------
+>> Issue: [B104:hardcoded_bind_all_interfaces] Possible binding to all interfaces.
+   Severity: Medium   Confidence: Medium
+   CWE: CWE-605 (https://cwe.mitre.org/data/definitions/605.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b104_hardcoded_bind_all_interfaces.html
+   Location: ./solutions/level_3/mock/mock_server.py:92:26
+91	    # Run uvicorn programmatically
+92	    uvicorn.run(app, host="0.0.0.0", port=PORT)
+
+--------------------------------------------------
+>> Issue: [B404:blacklist] Consider possible security implications associated with the subprocess module.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_imports.html#b404-import-subprocess
+   Location: ./solutions/level_3/scripts/billing-enablement.py:3:0
+2	import re
+3	import subprocess
+4	import time
+
+--------------------------------------------------
+>> Issue: [B607:start_process_with_partial_path] Starting a process with a partial executable path
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b607_start_process_with_partial_path.html
+   Location: ./solutions/level_3/scripts/billing-enablement.py:40:8
+39	    try:
+40	        subprocess.run(
+41	            [
+42	                "gcloud",
+43	                "services",
+44	                "enable",
+45	                "cloudbilling.googleapis.com",
+46	                "--project",
+47	                project_id,
+48	            ],
+49	            check=True,
+50	            capture_output=True,
+51	            text=True,
+52	        )
+53	        print("Successfully sent request to enable the Cloud Billing API.")
+
+--------------------------------------------------
+>> Issue: [B603:subprocess_without_shell_equals_true] subprocess call - check for execution of untrusted input.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html
+   Location: ./solutions/level_3/scripts/billing-enablement.py:40:8
+39	    try:
+40	        subprocess.run(
+41	            [
+42	                "gcloud",
+43	                "services",
+44	                "enable",
+45	                "cloudbilling.googleapis.com",
+46	                "--project",
+47	                project_id,
+48	            ],
+49	            check=True,
+50	            capture_output=True,
+51	            text=True,
+52	        )
+53	        print("Successfully sent request to enable the Cloud Billing API.")
+
+--------------------------------------------------
+>> Issue: [B104:hardcoded_bind_all_interfaces] Possible binding to all interfaces.
+   Severity: Medium   Confidence: Medium
+   CWE: CWE-605 (https://cwe.mitre.org/data/definitions/605.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b104_hardcoded_bind_all_interfaces.html
+   Location: ./solutions/level_4/backend/architect_agent/server.py:24:26
+23	    # Use 0.0.0.0 to allow external access if needed, port 8080 as standard
+24	    uvicorn.run(app, host='0.0.0.0', port=8081)
+
+--------------------------------------------------
+>> Issue: [B501:request_with_no_cert_validation] Call to httpx with verify=False disabling SSL certificate checks, security issue.
+   Severity: High   Confidence: High
+   CWE: CWE-295 (https://cwe.mitre.org/data/definitions/295.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b501_request_with_no_cert_validation.html
+   Location: ./solutions/level_4/backend/dispatch_agent/agent.py:29:18
+28	# Use insecure client to bypass SSL errors for debugging Cloud Run connection
+29	insecure_client = httpx.AsyncClient(verify=False)
+30	ARCHITECT_URL = os.environ.get("ARCHITECT_URL","http://localhost:8081")
+
+--------------------------------------------------
+>> Issue: [B104:hardcoded_bind_all_interfaces] Possible binding to all interfaces.
+   Severity: Medium   Confidence: Medium
+   CWE: CWE-605 (https://cwe.mitre.org/data/definitions/605.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b104_hardcoded_bind_all_interfaces.html
+   Location: ./solutions/level_4/backend/main.py:308:26
+307	    # Run uvicorn programmatically
+308	    uvicorn.run(app, host="0.0.0.0", port=PORT)
+
+--------------------------------------------------
+>> Issue: [B404:blacklist] Consider possible security implications associated with the subprocess module.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_imports.html#b404-import-subprocess
+   Location: ./solutions/level_4/scripts/billing-enablement.py:3:0
+2	import re
+3	import subprocess
+4	import time
+
+--------------------------------------------------
+>> Issue: [B607:start_process_with_partial_path] Starting a process with a partial executable path
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b607_start_process_with_partial_path.html
+   Location: ./solutions/level_4/scripts/billing-enablement.py:40:8
+39	    try:
+40	        subprocess.run(
+41	            [
+42	                "gcloud",
+43	                "services",
+44	                "enable",
+45	                "cloudbilling.googleapis.com",
+46	                "--project",
+47	                project_id,
+48	            ],
+49	            check=True,
+50	            capture_output=True,
+51	            text=True,
+52	        )
+53	        print("Successfully sent request to enable the Cloud Billing API.")
+
+--------------------------------------------------
+>> Issue: [B603:subprocess_without_shell_equals_true] subprocess call - check for execution of untrusted input.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html
+   Location: ./solutions/level_4/scripts/billing-enablement.py:40:8
+39	    try:
+40	        subprocess.run(
+41	            [
+42	                "gcloud",
+43	                "services",
+44	                "enable",
+45	                "cloudbilling.googleapis.com",
+46	                "--project",
+47	                project_id,
+48	            ],
+49	            check=True,
+50	            capture_output=True,
+51	            text=True,
+52	        )
+53	        print("Successfully sent request to enable the Cloud Billing API.")
+
+--------------------------------------------------
+>> Issue: [B311:blacklist] Standard pseudo-random generators are not suitable for security/cryptographic purposes.
+   Severity: Low   Confidence: High
+   CWE: CWE-330 (https://cwe.mitre.org/data/definitions/330.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_calls.html#b311-random
+   Location: ./solutions/level_5/satellite/main.py:102:27
+101	    global PODS, TARGET_PODS
+102	    PODS = [{"id": i, "x": random.randint(50, 850), "y": random.randint(100, 600)} for i in range(15)]
+103	    TARGET_PODS = [p.copy() for p in PODS]
+
+--------------------------------------------------
+>> Issue: [B311:blacklist] Standard pseudo-random generators are not suitable for security/cryptographic purposes.
+   Severity: Low   Confidence: High
+   CWE: CWE-330 (https://cwe.mitre.org/data/definitions/330.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_calls.html#b311-random
+   Location: ./solutions/level_5/satellite/main.py:102:57
+101	    global PODS, TARGET_PODS
+102	    PODS = [{"id": i, "x": random.randint(50, 850), "y": random.randint(100, 600)} for i in range(15)]
+103	    TARGET_PODS = [p.copy() for p in PODS]
+
+--------------------------------------------------
+>> Issue: [B104:hardcoded_bind_all_interfaces] Possible binding to all interfaces.
+   Severity: Medium   Confidence: Medium
+   CWE: CWE-605 (https://cwe.mitre.org/data/definitions/605.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b104_hardcoded_bind_all_interfaces.html
+   Location: ./solutions/level_5/satellite/main.py:270:26
+269	    import uvicorn
+270	    uvicorn.run(app, host="0.0.0.0", port=8000, proxy_headers=True, forwarded_allow_ips="*")
+
+--------------------------------------------------
+>> Issue: [B404:blacklist] Consider possible security implications associated with the subprocess module.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/blacklists/blacklist_imports.html#b404-import-subprocess
+   Location: ./solutions/level_5/scripts/billing-enablement.py:3:0
+2	import re
+3	import subprocess
+4	import time
+
+--------------------------------------------------
+>> Issue: [B607:start_process_with_partial_path] Starting a process with a partial executable path
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b607_start_process_with_partial_path.html
+   Location: ./solutions/level_5/scripts/billing-enablement.py:40:8
+39	    try:
+40	        subprocess.run(
+41	            [
+42	                "gcloud",
+43	                "services",
+44	                "enable",
+45	                "cloudbilling.googleapis.com",
+46	                "--project",
+47	                project_id,
+48	            ],
+49	            check=True,
+50	            capture_output=True,
+51	            text=True,
+52	        )
+53	        print("Successfully sent request to enable the Cloud Billing API.")
+
+--------------------------------------------------
+>> Issue: [B603:subprocess_without_shell_equals_true] subprocess call - check for execution of untrusted input.
+   Severity: Low   Confidence: High
+   CWE: CWE-78 (https://cwe.mitre.org/data/definitions/78.html)
+   More Info: https://bandit.readthedocs.io/en/1.9.4/plugins/b603_subprocess_without_shell_equals_true.html
+   Location: ./solutions/level_5/scripts/billing-enablement.py:40:8
+39	    try:
+40	        subprocess.run(
+41	            [
+42	                "gcloud",
+43	                "services",
+44	                "enable",
+45	                "cloudbilling.googleapis.com",
+46	                "--project",
+47	                project_id,
+48	            ],
+49	            check=True,
+50	            capture_output=True,
+51	            text=True,
+52	        )
+53	        print("Successfully sent request to enable the Cloud Billing API.")
+
+--------------------------------------------------
+
+Code scanned:
+	Total lines of code: 14975
+	Total lines skipped (#nosec): 0
+	Total potential issues skipped due to specifically being disabled (e.g., #nosec BXXX): 0
+
+Run metrics:
+	Total issues (by severity):
+		Undefined: 0
+		Low: 52
+		Medium: 19
+		High: 2
+	Total issues (by confidence):
+		Undefined: 0
+		Low: 8
+		Medium: 11
+		High: 54
+Files skipped (1):
+	./level_4/backend/main.py (syntax error while parsing AST from file)
